@@ -5,44 +5,36 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lmittie <lmittie@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/02/28 17:54:25 by lmittie           #+#    #+#              #
-#    Updated: 2020/03/09 20:40:26 by lmittie          ###   ########.fr        #
+#    Created: 2020/03/06 16:14:45 by lmittie           #+#    #+#              #
+#    Updated: 2020/03/09 20:38:32 by lmittie          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = lmittie.filler
+NAME = visualazier
 
-SRCS = $(addprefix sources/, fill_heat_map.c filler.c main.c parse_board.c \
-	parse_player_number.c parse_token.c read_board.c delete.c error.c print_position.c)
+SRCS = $(addprefix sources/, board_manipulation.cpp calculations.cpp handle_events.cpp main.cpp)
 
-OBJ = $(SRCS:.c=.o)
+OBJ = $(SRCS:.cpp=.o)
 
-LIBDIR = libft/
+CFLAGS = -Wall -Wextra -Werror -O2 -std=c++11
 
-LIBNAME = libft/libft.a
+SDL_LIB = -L ~/.brew/lib -lSDL2
 
-CFLAGS = -Wall -Wextra -Werror -O2
-
-INCLUDES = -I includes/ -I libft/
+INCLUDES = -I includes/ -I ~/.brew/include
 
 all: $(NAME)
 
-$(OBJ): %.o: %.c libft/libft.h includes/filler.h
-	gcc -c $(CFLAGS) $< -o $@ $(INCLUDES)
+$(OBJ): %.o: %.cpp includes/visualizer.h
+	g++ -c $(CFLAGS) $< -o $@ $(INCLUDES)
 
-$(LIBNAME):
-	@make -C $(LIBDIR)
-
-$(NAME): $(LIBNAME) $(OBJ)
-	gcc $(CFLAGS) $(OBJ) -L $(LIBDIR) -lft -o $(NAME) $(INCLUDES)
+$(NAME): $(OBJ)
+	g++ $(CFLAGS) $(OBJ) $(SDL_LIB) $(INCLUDES) -o $(NAME)
 
 clean:
 	@/bin/rm -f $(OBJ)
-	@make -C $(LIBDIR) clean
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@make -C $(LIBDIR) fclean
 
 re: fclean all
 
