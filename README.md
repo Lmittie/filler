@@ -16,7 +16,9 @@ A board is a two-dimensional grid with an arbitrary number of rows and columns. 
 launch the game an initial board must be passed as an argument to the VM. This initial
 board must have a starting form for each player.
 
-![board example](https://downloader.disk.yandex.ru/preview/a80cc8366cc9d8b82bce1fac03bb8cbaf46dcfb4413eddb437ab53e0e7767279/5f77782a/9eW4rAdDeEt_FwHt2EbAE5YdO3AYTbGm5X43L-K0mwmvRG5K6VxVsI-jK2RF6PV_iJnUZitPYE4QoGzxZoc74w==?uid=0&filename=plateau.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&tknv=v2&owner_uid=105167634&size=866x424)
+![board example](https://github.com/Lmittie/filler/blob/master/examples/plateau.png?raw=true)
+
+![piece example](https://github.com/Lmittie/filler/blob/master/examples/piece.png?raw=true)
 
 ## Usage
 ```
@@ -40,10 +42,10 @@ make && make clean
 ```
 
 ## Visualization
-For visualization usage you should install SDL2.
+For visualization usage you should install SDL2 (Mac OC).
 
 ```
 make -C visual/ && make clean -C visual/
 ./virtual_machine/filler_vm -f path [-i | -p1 path | -p2 path] | ./visual/visualazier
 ```
-![](https://downloader.disk.yandex.ru/preview/4eee40fb63f2441cda9659d0091c3dcafe036c7760d0595f9607871fa388cd3f/5f777e55/Iov8E-P-z5Wl-6rTPFHU7cCYP2CeX5DzXWtV_yZqrAh6EYkD_vVf9sONFldqxtJ5OC8CdxUB6XkC-zAEbEQCiA==?uid=0&filename=filler.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&tknv=v2&owner_uid=105167634&size=1048x1048)
+![](https://github.com/Lmittie/filler/blob/master/examples/filler.png?raw=true)
